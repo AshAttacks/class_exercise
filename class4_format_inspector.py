@@ -23,7 +23,7 @@ def inspect_csv(filepath):
     # 3. Print the first three rows (e.g. DataFrame.head(3))
     df = pd.read_csv(filepath) # read csv
     logging.info(f'Inspecting CSV: {filepath}') # logging info message
-    print(df.head(5)) # Print top 3 rows
+    print(df.head(3)) # Print top 3 rows
     return df # return df
 
 
