@@ -32,16 +32,16 @@ def main():
 
     try:
         data = inspect_file(args.input)
-    except FileNotFoundError:
-        logger.error(f"File doesn't exist: File not found: {args.input}")
+    except FileNotFoundError as error:
+        logger.error(error)
         sys.exit(1)
 
     # TODO 3: Call inspect_extension() inside a separate try block.
 
     try:
         inspect_extension(data)
-    except ValueError:
-        logger.error(f'Unsupported format: Unsupported text format: {data['extension']}')
+    except ValueError as error:
+        logger.error(error)
         sys.exit(1)
     # TODO 4: Catch ValueError.
     #         Log an ERROR message (e.g. unsupported format), and

@@ -15,11 +15,10 @@ def inspect_file(filepath_str):
     #         Raise FileNotFoundError (e.g. file not found).
     if not filepath.exists():
         logger.error(f"File not found: {filepath_str}")
-        raise FileNotFoundError()
+        raise FileNotFoundError(f"File doesn't exist: File not found: {filepath_str}")
     # TODO 3: Return a dictionary containing:
     #         name and extension.
-    dict = {'name' : name, 'extension' : suffix}
-    return dict
+    return {'name' : name, 'extension' : suffix}
 
 
 def inspect_extension(file_info):
@@ -33,7 +32,7 @@ def inspect_extension(file_info):
 
     if not file_info['extension'] == supported_extension:
         logger.error(f'File has an unsupported extension: {file_info['extension']}')
-        raise ValueError()
+        raise ValueError(f'Unsupported format: Unsupported text format: {file_info['extension']}')
 
     # TODO 5: Return file_info.
     return file_info
