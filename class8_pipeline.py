@@ -1,7 +1,7 @@
 import logging
+import sys
 from pathlib import Path
-from class8_data_loader import load_netflix
-from class8_data_validator import require_columns
+from class8_src import load_netflix, require_columns
 
 logging.basicConfig(
     level=logging.INFO,
@@ -15,11 +15,15 @@ def main():
 
     # TODO 3:
     # Inside a try/except block:
+    try:
+        df = load_netflix(input_path)
+        df = require_columns(df, ['title', 'type', 'release_year'])
+    except ValueError:
+        sys.exit(1)
     # Load the data and require columns: ["title", "type", "release_year"].
     # Catch ValueError and exit with status code 1.
     # Log an INFO
-    pass
-
+    logger.info(f'Loaded Netflix file {input_path}')
 
 if __name__ == "__main__":
     main()
