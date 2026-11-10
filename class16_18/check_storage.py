@@ -83,7 +83,7 @@ class BookStorage:
             rows = connection.execute(sql_statement, (min_price, limit)).fetchall()
             # Log the returned row count at DEBUG.
             logger.debug(f"Returned Rows: {rows}")
-            return rows
+            return [dict(row) for row in rows]
         finally:
             connection.close()
 
