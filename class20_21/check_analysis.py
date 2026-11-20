@@ -37,6 +37,13 @@ def summarize_genres(df, min_movies=1):
     logger.debug(f"Genre summary: groups={len(summary)}")
     return summary
 
+def filter_movies(df, min_rating):
+    # TODO: Keep rows where rating >= min_rating.
+    filtered = df[df['rating'] >= min_rating]
+    # Return a DataFrame containing title, release_year, rating, and genre.
+    # Preserve the original row order.
+    return filtered
+
 def main():
     df = pd.read_csv(Path("data") / "class20_movies.csv")
     print(df.groupby("genre")["rating"].mean())
